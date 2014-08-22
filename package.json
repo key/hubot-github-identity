@@ -23,7 +23,10 @@
   },
 
   "dependencies": {
-    "coffee-script": "~1.7.1"
+    "coffee-script": "~1.7.1",
+    "redis": "~0.12.1",
+    "hiredis": "~0.1.17"
+
   },
 
   "devDependencies": {
