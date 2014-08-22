@@ -43,11 +43,46 @@ body {
 }
 
 h1 {
-  font-size: 22px;
+  font-size: 21px;
   color: #fff;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.05em;
+  line-height: 28px;
   font-weight: normal;
   margin: 20px 0;
+
+  strong {
+    font-weight: bold;
+  }
+}
+
+@-webkit-keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@-moz-keyframes typing {
+    from { width: 0% }
+    to { width:100% }
+}
+
+@-webkit-keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgba(#fff, .8) }
+}
+
+@-moz-keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #fff }
+}
+
+h1 {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 12px solid #fff;
+    padding-right: 2px;
+    -webkit-animation: typing 1s steps(71, end), blink-caret 1s step-end infinite;
+    -moz-animation: typing 1s steps(71, end), blink-caret 1s step-end infinite;
 }
 
 .centered {
