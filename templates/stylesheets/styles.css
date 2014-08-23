@@ -64,6 +64,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 html {
+  box-sizing: border-box;
   background-image: linear-gradient(#007aaa, #292931);
   top: 0;
   bottom: 0;
@@ -160,9 +161,6 @@ h1 {
 }
 .centered input {
   background: #212121;
-  background-image: url("http://cl.ly/image/1l0Q283n2U0q/image");
-  background-repeat: no-repeat;
-  background-position: center right;
   padding: 20px;
   width: 100%;
   border: none;
@@ -178,4 +176,31 @@ h1 {
   font-size: 13px;
   line-height: 24px;
   color: rgba(255, 255, 255, 0.7);
+}
+
+.hubot {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  margin-left: -50px;
+}
+.hubot svg {
+  display: inline-block;
+  position: absolute;
+}
+.hubot .pulse {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  -webkit-animation: dash 3s linear infinite;
+  z-index: 10;
+}
+
+@-webkit-keyframes dash {
+  from {
+    stroke-dashoffset: 500;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
 }
