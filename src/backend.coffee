@@ -1,5 +1,6 @@
 # Description:
-#   Manage your GitHub identities and tokens.
+#   Backend that handles the behind the scenes for the web based part of the
+#   package.
 #
 # Author
 #   tombell
