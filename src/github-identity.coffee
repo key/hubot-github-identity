@@ -11,8 +11,6 @@
 
 identity = require '../lib/identity'
 
-console.log identity
-
 module.exports = (robot) ->
 
   robot.respond /who do you know/i, (res) ->
