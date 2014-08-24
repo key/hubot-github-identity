@@ -18,7 +18,11 @@ window.RepliesView = Backbone.View.extend({
   },
 
   fadePrevious: function() {
-    this.$('h1').css('opacity', '.2');
+    this.$('h1')
+      .css('opacity', '.2')
+      .css('border-right', '0')
+      .css('-webkit-animation', 'none')
+      .css('-moz-animation', 'none');
   },
 });
 
