@@ -9,8 +9,6 @@
 #   tombell
 #   mattgraham
 
-identity = require '../lib/identity'
-
 module.exports = (robot) ->
 
   robot.respond /who do you know/i, (res) ->
