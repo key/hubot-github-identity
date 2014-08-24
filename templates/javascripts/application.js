@@ -1,14 +1,8 @@
 window.App = {
   init: function() {
-    this.appView = new window.AppView;
-  },
-};
-
-window.AppView = Backbone.View.extend({
-  initialize: function() {
     this.commandbar = new window.CommandBarView;
   },
-});
+};
 
 window.RepliesView = Backbone.View.extend({
   el: '.js-replies',
@@ -35,7 +29,6 @@ window.ReplyView = Backbone.View.extend({
 
   render: function() {
     this.$el.html(this.template());
-    console.log(this.$el);
     return this;
   },
 });
