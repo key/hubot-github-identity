@@ -8,8 +8,14 @@
 <body>
 
   <div class="centered">
-    <h1><strong>Hubot > </strong>Greetings unidentified one, please enter your GitHub user name  </h1>
-    <input type="text" /></input>
+    <div class="js-replies">
+      <h1><strong>Hubot > </strong>Greetings unidentified one, please enter your GitHub user name  </h1>
+    </div>
+
+    <div class="js-command-bar">
+      <input class="js-command-input" type="text" /></input>
+    </div>
+
     <span class="meta">(Enter GitHub user name)</span>
   </div>
 
@@ -37,8 +43,8 @@
   <script src="javascripts/application.js"></script>
 
   <script>
-    $(function{
-      init();
+    $(function() {
+      window.App.init();
     });
   </script>
 
