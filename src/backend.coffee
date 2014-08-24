@@ -19,3 +19,9 @@ module.exports = (robot) ->
     route:  '/github/identity'
     handle: connect.static(path.join(__dirname, '..', 'templates'))
   })
+
+  robot.router.post '/github/identity/username', (req, res) ->
+    res.send 'OK'
+
+  robot.router.post '/github/identity/token', (req, res) ->
+    res.send 'OK'
