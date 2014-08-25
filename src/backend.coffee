@@ -10,6 +10,8 @@ path = require 'path'
 
 connect = require 'connect'
 
+github = require '../lib/github'
+
 module.exports = (robot) ->
 
   # this is a really dirty JS abusing hack that probably should never be used
@@ -20,8 +22,12 @@ module.exports = (robot) ->
     handle: connect.static(path.join(__dirname, '..', 'templates'))
   })
 
+  # verify that the submitted username exists on github
   robot.router.post '/github/identity/username', (req, res) ->
-    res.send 'OK'
+    return res.send 422 unless req.body.username
+    github.request "/users/#{req.body.username}", (err, data) ->
+      return res.send 404 if err?
+      res.send data
 
   robot.router.post '/github/identity/token', (req, res) ->
     res.send 'OK'
