@@ -1,7 +1,61 @@
 // Public: The main entry point to the frontend application.
 window.App = {
+  username: null,
+  token: null,
+
   init: function() {
     this.commandbar = new window.CommandBarView;
+    this.replies = new window.RepliesView;
+  },
+
+  request: function(url, data, callback) {
+    $.ajax(url, {
+      type: 'POST',
+      data: data,
+      success: function(data)  {
+        callback(null, data);
+      },
+      error: function(xhr, status, err) {
+        callback(err, null);
+      },
+    });
+  },
+
+  submitUsername: function(username) {
+    var data = {
+      username: username,
+    };
+
+    var self = this;
+    var callback = function(err, data) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        console.log(data);
+      }
+    };
+
+    this.request('/github/identity/username', data, callback);
+  },
+
+  submitToken: function(token) {
+    var data = {
+      username: this.username,
+      token: token,
+    };
+
+    var self = this;
+    var callback = function(err, data) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        console.log(data);
+      }
+    };
+
+    this.request('/github/identity/token', data, callback);
   },
 };
 
@@ -55,9 +109,17 @@ window.CommandBarView = Backbone.View.extend({
     if (e.keyCode != 13) return;
     if (!this.commandinput.val()) return;
 
-    var reply = new window.ReplyView({ template: '#user-success' });
-    this.replies.fadePrevious();
-    this.replies.add(reply);
+    var input = this.commandinput.val();
     this.commandinput.val('');
+
+    if (!window.App.username && !window.App.token) {
+      // step 1: we need the github username
+    }
+    else if (window.App.username && !window.App.token) {
+      // step 2: we need the github api token
+    }
+    else if (window.App.username && window.App.token) {
+      // step 3: we're done
+    }
   },
 });
