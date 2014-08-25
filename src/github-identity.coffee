@@ -1,8 +1,6 @@
 # Description:
 #   Manage your GitHub identities and tokens.
 #
-# Configuration:
-#
 # Commands:
 #
 # Author
