@@ -6,22 +6,19 @@
 #   tombell
 #   mattgraham
 
-path    = require 'path'
-url     = require 'url'
+path = require 'path'
+url = require 'url'
 
 connect = require 'connect'
-redis   = require 'redis'
+redis = require 'redis'
 
-github  = require '../lib/github'
+github = require '../lib/github'
+identity = require '../lib/identity'
 
 module.exports = (robot) ->
-  info = url.parse process.env.REDISTOGO_URL or
-                   process.env.REDISCLOUD_URL or
-                   process.env.REDIS_URL or
-                   process.env.BOXEN_REDIS_URL or
-                   'redis://localhost:6379'
 
-  client = redis.createClient(info.port, info.hostname)
+  robot.identity = identity
+  robot.identity.init()
 
   # this is a really dirty JS abusing hack that probably should never be used
   # but it let's us put middleware into the stack even after the app has
