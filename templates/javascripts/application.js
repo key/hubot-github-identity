@@ -52,7 +52,7 @@ window.App = {
     var callback = function(err, data) {
       if (err) {
         console.log(err);
-        self.addReply('#token-error', {});
+        self.addReply('#token-failed', {});
       }
       else {
         console.log(data);
