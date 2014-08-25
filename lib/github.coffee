@@ -1,12 +1,15 @@
 https = require 'https'
 
-request = (path, callback) ->
+request = (path, token, callback) ->
   options =
     host: 'api.github.com'
     path: path
     method: 'GET'
     headers:
       'user-agent': 'hubot'
+
+  if token
+    options.headers['authorization'] = "token #{token}"
 
   req = https.request options, (res) ->
     data = ''
