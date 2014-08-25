@@ -1,9 +1,11 @@
+// Public: The main entry point to the frontend application.
 window.App = {
   init: function() {
     this.commandbar = new window.CommandBarView;
   },
 };
 
+// Internal: The view for handling replies from hubot.
 window.RepliesView = Backbone.View.extend({
   el: '.js-replies',
 
@@ -20,6 +22,7 @@ window.RepliesView = Backbone.View.extend({
   },
 });
 
+// Internal: The view for handling a single reply from hubot.
 window.ReplyView = Backbone.View.extend({
   tagName: 'h1',
 
@@ -33,6 +36,7 @@ window.ReplyView = Backbone.View.extend({
   },
 });
 
+// Internal: The view for handling the command bar input.
 window.CommandBarView = Backbone.View.extend({
   el: '.js-command-bar',
 
