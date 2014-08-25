@@ -28,4 +28,6 @@ module.exports = (robot) ->
       res.send data
 
   robot.router.post '/github/identity/token', (req, res) ->
+    return res.send 422 unless req.body.username
+    return res.send 422 unless req.body.token
     res.send 'OK'
