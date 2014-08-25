@@ -25,6 +25,7 @@ module.exports = (robot) ->
     return res.send 422 unless req.body.username
     github.request "/users/#{req.body.username}", null, (err, data) ->
       return res.send 404 if err?
+      return res.send 404 if data.message is 'Not Found'
       res.send data
 
   # verify that the submitted token works for the username
@@ -33,4 +34,5 @@ module.exports = (robot) ->
     return res.send 422 unless req.body.token
     github.request '/user', req.body.token, (err, data) ->
       return res.send 404 if err?
+      return res.send 404 if data.message is 'Bad credentials'
       res.send data
