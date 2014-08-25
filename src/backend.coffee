@@ -13,7 +13,7 @@ github  = require '../lib/github'
 module.exports = (robot) ->
 
   # this is a really dirty JS abusing hack that probably should never be used
-  # but it let's the put middleware into the stack even after the app has
+  # but it let's us put middleware into the stack even after the app has
   # started listening - yolo
   robot.router.stack.splice(robot.router.stack.length - 1, 0, {
     route:  '/github/identity'
