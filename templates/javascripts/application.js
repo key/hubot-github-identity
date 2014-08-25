@@ -30,9 +30,12 @@ window.App = {
     var callback = function(err, data) {
       if (err) {
         console.log(err);
+        self.addReply('#user-failed', {});
       }
       else {
         console.log(data);
+        self.addReply('#user-success', data);
+        self.username = data.login;
       }
     };
 
@@ -49,9 +52,12 @@ window.App = {
     var callback = function(err, data) {
       if (err) {
         console.log(err);
+        self.addReply('#token-error', {});
       }
       else {
         console.log(data);
+        self.addReply('#token-success', data);
+        self.token = token;
       }
     };
 
@@ -91,7 +97,7 @@ window.ReplyView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.html(this.template());
+    this.$el.html(this.template(this.model));
     return this;
   },
 });
@@ -117,13 +123,10 @@ window.CommandBarView = Backbone.View.extend({
     this.commandinput.val('');
 
     if (!window.App.username && !window.App.token) {
-      // step 1: we need the github username
+      window.App.submitUsername(input);
     }
     else if (window.App.username && !window.App.token) {
-      // step 2: we need the github api token
-    }
-    else if (window.App.username && window.App.token) {
-      // step 3: we're done
+      window.App.submitToken(input);
     }
   },
 });
