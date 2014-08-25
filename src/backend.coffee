@@ -27,6 +27,7 @@ module.exports = (robot) ->
       return res.send 404 if err?
       res.send data
 
+  # verify that the submitted token works for the username
   robot.router.post '/github/identity/token', (req, res) ->
     return res.send 422 unless req.body.username
     return res.send 422 unless req.body.token
