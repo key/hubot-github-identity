@@ -101,8 +101,6 @@ window.CommandBarView = Backbone.View.extend({
   initialize: function() {
     this.commandinput = this.$('.js-command-input');
     this.commandinput.focus();
-
-    this.replies = new window.RepliesView;
   },
 
   submit: function(e) {
