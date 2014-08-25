@@ -31,7 +31,10 @@ module.exports = (robot) ->
   # verify that the submitted username exists on github
   robot.router.post '/github/identity/username', (req, res) ->
     return res.send 422 unless req.body.username
-    github.request "/users/#{req.body.username}", null, (err, data) ->
+
+    username = req.body.username
+
+    github.request "/users/#{username}", null, (err, data) ->
       return res.send 404 if err?
       return res.send 404 if data.message is 'Not Found'
       res.send data
@@ -40,6 +43,10 @@ module.exports = (robot) ->
   robot.router.post '/github/identity/token', (req, res) ->
     return res.send 422 unless req.body.username
     return res.send 422 unless req.body.token
+
+    username = req.body.username
+    token = req.body.token
+
     github.request '/user', req.body.token, (err, data) ->
       return res.send 404 if err?
       return res.send 404 if data.message is 'Bad credentials'
