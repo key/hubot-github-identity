@@ -57,6 +57,12 @@ window.App = {
 
     this.request('/github/identity/token', data, callback);
   },
+
+  addReply: function(template, model) {
+    var view = new window.ReplyView({ template: template, model: model });
+    this.replies.fadePrevious();
+    this.replies.add(view);
+  },
 };
 
 // Internal: The view for handling replies from hubot.
