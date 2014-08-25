@@ -30,4 +30,6 @@ module.exports = (robot) ->
   robot.router.post '/github/identity/token', (req, res) ->
     return res.send 422 unless req.body.username
     return res.send 422 unless req.body.token
-    res.send 'OK'
+    github.request '/user', req.body.token, (err, data) ->
+      return res.send 404 if err?
+      res.send data
