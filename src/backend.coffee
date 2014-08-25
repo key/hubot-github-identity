@@ -6,11 +6,9 @@
 #   tombell
 #   mattgraham
 
-path = require 'path'
-
+path    = require 'path'
 connect = require 'connect'
-
-github = require '../lib/github'
+github  = require '../lib/github'
 
 module.exports = (robot) ->
 
