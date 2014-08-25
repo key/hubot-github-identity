@@ -11,6 +11,10 @@
 
 module.exports = (robot) ->
 
+  unless robot.identity
+    robot.identity = require '../lib/identity'
+    robot.identity.init()
+
   robot.respond /who do you know/i, (res) ->
     # TODO: list the chat username to github username associations
     res.reply "This hasn't been implemented yet"

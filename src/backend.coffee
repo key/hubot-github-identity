@@ -13,12 +13,12 @@ connect = require 'connect'
 redis = require 'redis'
 
 github = require '../lib/github'
-identity = require '../lib/identity'
 
 module.exports = (robot) ->
 
-  robot.identity = identity
-  robot.identity.init()
+  unless robot.identity
+    robot.identity = require '../lib/identity'
+    robot.identity.init()
 
   # this is a really dirty JS abusing hack that probably should never be used
   # but it let's us put middleware into the stack even after the app has
