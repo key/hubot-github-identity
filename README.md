@@ -15,9 +15,21 @@ and have Hubot run commands on their behalf when using scripts for GitHub.
 
 ## Installation
 
-* Add `hubot-github-identity` to your `package.json` file.
-* Add `hubot-github-identity` to your `external-scripts.json` file.
+  * Add `hubot-github-identity` to your `package.json` file.
+  * Add `hubot-github-identity` to your `external-scripts.json` file.
 
 ## Configuration
 
-Coming soon.
+This package requires a Redis instance.
+
+The URL for the Redis instance should be set in any of the following environment
+variables:
+
+  * `REDISTOGO_URL`
+  * `REDISCLOUD_URL`
+  * `REDIS_URL`
+  * `BOXEN_REDIS_URL`
+
+If none are supplied it fallsback to using `redis://localhost:6379`. If you are
+already using the `redis-brain.coffee` script, you should already have this
+environment variable configured.
