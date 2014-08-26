@@ -33,3 +33,7 @@ variables:
 If none are supplied it fallsback to using `redis://localhost:6379`. If you are
 already using the `redis-brain.coffee` script, you should already have this
 environment variable configured.
+
+## Usage
+
+Coming soon.
