@@ -21,21 +21,26 @@ module.exports = (robot) ->
     github = res.match[1]
 
     robot.identity.setChatUserForGitHubUser chat, github, (err, reply) ->
-      # TODO: handle already associated usernames
       if err
-        res.reply "Oops: #{err}"
-      else if reply
-        res.reply "Ok, you are #{github} on GitHub."
+        switch err.type
+          when 'redis'
+            res.reply "Oops: #{err}"
+          when 'chat user'
+            res.reply "Sorry, you are already #{err.msg} on GitHub"
+          when 'token'
+            res.reply "Sorry, I don't know of #{github}, maybe you need to register your GitHub username and API token with me?"
       else
-        res.reply "Sorry, I don't know of #{github}, maybe you need to register your GitHub username and API token with me?"
+        res.reply "Ok, you are #{github} on GitHub."
 
   robot.respond /forget me/i, (res) ->
     chat = res.envelope.user.name
 
     robot.identity.forgetChatUser chat, (err, reply) ->
       if err
-        res.reply "Oops: #{err}"
-      else if reply
-        res.reply "Ok, I have no idea who you are anymore."
+        switch err.type
+          when 'redis'
+            res.reply "Oops: #{err}"
+          when 'chat user'
+            res.reply "Sorry, you haven't let me know your GitHub username."
       else
-        res.reply "Sorry, you haven't let me know your GitHub username."
+        res.reply 'Ok, I have no idea who you are anymore.'

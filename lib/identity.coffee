@@ -13,26 +13,62 @@ identity =
 
   findToken: (chatUser, callback) ->
     @client.get "ghid:chat:#{chatUser}", (err, githubUser) =>
-      return callback(err) if err
-      return callback(null, null) unless githubUser
+      # redis err
+      return callback(err: err, type: 'redis') if err
 
-      @client.get "ghid:token:#{githubUser}", callback
+      # github->chat username missing
+      return callback(err: 'missing', type: 'github user') unless githubUser
+
+      @client.get "ghid:token:#{githubUser}", (err, token) ->
+        # redis err
+        return callback(err: err, type: 'redis') if err
+
+        # ok
+        callback(null, token)
 
   setGitHubUserAndToken: (githubUser, token, callback) ->
-    @client.set "ghid:token:#{githubUser}", token, callback
+    @client.set "ghid:token:#{githubUser}", token, (err, reply) ->
+      # redis err
+      return callback(err: err, type: 'redis') if err
+
+      # ok
+      callback(null, reply)
 
   setChatUserForGitHubUser: (chatUser, githubUser, callback) ->
     @client.get "ghid:chat:#{chatUser}", (err, reply) =>
-      return callback(err, null) if err
-      return callback(null, null) if reply
+      # redis err
+      return callback(err: err, type: 'redis') if err
+
+      # github->chat username already exists
+      return callback(err: 'existing', type: 'chat user', msg: reply) if reply
 
       @client.get "ghid:token:#{githubUser}", (err, token) =>
-        return callback(err, null) if err
-        return callback(null, null) unless token
+        # redis err
+        return callback(err: err, type: 'redis') if err
 
-        @client.set "ghid:chat:#{chatUser}", githubUser, callback
+        # github->token missing
+        return callback(err: 'missing', type: 'token') unless token
+
+        @client.set "ghid:chat:#{chatUser}", githubUser, (err, reply) ->
+          # redis err
+          return callback(err: err, type: 'redis') if err
+
+          # ok
+          callback(null, reply)
 
   forgetChatUser: (chatUser, callback) ->
-    @client.del "ghid:chat:#{chatUser}", callback
+    @client.get "ghid:chat:#{chatUser}", (err, github) =>
+      # redis err
+      return callback(err: err, type: 'redis') if err
+
+      # github->chat username missing
+      return callback(err: 'missing', type: 'chat user') unless github
+
+      @client.del "ghid:chat:#{chatUser}", (err, reply) ->
+        # redis err
+        return callback(err: err, type: 'redis') if err
+
+        # ok
+        callback(null, reply)
 
 module.exports = identity
