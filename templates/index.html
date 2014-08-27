@@ -8,10 +8,27 @@
 <body>
 
   <div class="centered">
+    <span class="name">Hubot:</span>
+
     <div class="js-replies">
-      <span class="name">Hubot:</span>
       <span class="message">Greetings unidentified one, please enter your GitHub user name:</span>
     </div>
+
+    <script type="text/template" id="user-success">
+      Ah, I remember that face, now can I get your GitHub API token?
+    </script>
+
+    <script type="text/template" id="user-failed">
+      Sadly, I cannot find a GitHub user by that name. Try again?
+    </script>
+
+    <script type="text/template" id="token-success">
+      Wonderful, I can now code for you while you sleep. Enjoy the night off.
+    </script>
+
+    <script type="text/template" id="token-failed">
+      Sorry buddy, that token isn't any good. Do you need to <a href="#">create a new one</a>?
+    </script>
 
     <div class="js-command-bar">
       <input class="js-command-input" type="text" /></input>
@@ -35,22 +52,6 @@
         c0,0,7.15,8,7.27,8s7.12,0.09,7.21,0"/>
       </svg>
   </div>
-
-  <script type="text/template" id="user-success">
-    <strong>Hubot > </strong>Ah, I remember that face, now can I get your GitHub API token?
-  </script>
-
-  <script type="text/template" id="user-failed">
-    <strong>Hubot > </strong>Sadly, I cannot find a GitHub user by that name. Try again?
-  </script>
-
-  <script type="text/template" id="token-success">
-    <strong>Hubot > </strong>Wonderful, I can now code for you while you sleep. Enjoy the night off.
-  </script>
-
-  <script type="text/template" id="token-failed">
-    <strong>Hubot > </strong>Sorry buddy, that token isn't any good. Do you need to <a href="#">create a new one</a>?
-  </script>
 
   <script src="javascripts/jquery.js"></script>
   <script src="javascripts/underscore.js"></script>
