@@ -42,6 +42,16 @@ body {
   width: 100%;
 }
 
+a {
+  color: lighten(#007AAA, 40%);
+  transition: color .1s ease-in;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten(#007AAA, 10%);
+  }
+}
+
 h1 {
   font-size: 21px;
   color: #fff;
