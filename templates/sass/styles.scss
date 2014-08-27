@@ -75,14 +75,6 @@ h1 {
     to { width:100% }
 }
 
-h1 {
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    -webkit-animation: typing 1s steps(71, end);
-    -moz-animation: typing 1s steps(71, end);
-}
-
 .centered {
   @include vertical-align;
   width: 100%;
@@ -107,19 +99,30 @@ h1 {
     float: left;
   }
 
+  @media only screen
+  and (max-width : 600px) {
+    .name, .hubot-avatar {
+      display: none;
+    }
+
+    .message {
+      text-align: center;
+    }
+  }
 
   .avatar {
     display: none;
     position: absolute;
-    top: -200px;
+    top: -160px;
     left: 50%;
-    margin-left: -50px;
+    margin-left: -70px;
 
     img {
-      height: 100px;
-      width: 100px;
+      height: 140px;
+      width: 140px;
       border-radius: 100%;
-      border: 3px solid #fff;
+      border: 4px solid #fff;
+      box-shadow: 0 0 20px rgba(#fff, .3);
     }
   }
 
