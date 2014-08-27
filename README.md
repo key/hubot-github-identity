@@ -13,10 +13,37 @@ form served by Hubot.
 People add their GitHub username and API token so they can identify themselves
 and have Hubot run commands on their behalf when using scripts for GitHub.
 
+![Registering API Token](docs/screenshot.png)
+
 ## Installation
 
-Coming soon.
+  * Add `hubot-github-identity` to your `package.json` file.
+  * Add `hubot-github-identity` to your `external-scripts.json` file.
+
+**Note: your Hubot should be using the built in Express server.**
 
 ## Configuration
 
+This package requires a Redis instance.
+
+The URL for the Redis instance should be set in any of the following environment
+variables:
+
+  * `REDISTOGO_URL`
+  * `REDISCLOUD_URL`
+  * `REDIS_URL`
+  * `BOXEN_REDIS_URL`
+
+If none are supplied it fallsback to using `redis://localhost:6379`. If you are
+already using the `redis-brain.coffee` script, you should already have this
+environment variable configured.
+
+## Usage
+
 Coming soon.
+
+## See Also
+
+Scripts utilizing `hubot-github-identity`.
+
+  * Coming soon
