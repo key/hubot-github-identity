@@ -66,7 +66,6 @@ window.App = {
 
   addReply: function(template, model) {
     var view = new window.ReplyView({ template: template, model: model });
-    this.replies.fadePrevious();
     this.replies.add(view);
   },
 };
@@ -76,15 +75,11 @@ window.RepliesView = Backbone.View.extend({
   el: '.js-replies',
 
   add: function(reply) {
-    this.$el.append(reply.render().el);
-  },
-
-  fadePrevious: function() {
-    this.$('h1')
-      .css('opacity', '.2')
-      .css('border-right', '0')
-      .css('-webkit-animation', 'none')
-      .css('-moz-animation', 'none');
+    var self = this;
+    this.$('h1').fadeOut('fast', function() {
+      self.$el.empty();
+      self.$el.append(reply.render().el);
+    });
   },
 });
 
