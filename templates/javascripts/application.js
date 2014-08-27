@@ -76,7 +76,7 @@ window.RepliesView = Backbone.View.extend({
 
   add: function(reply) {
     var self = this;
-    this.$('h1').fadeOut('fast', function() {
+    this.$('.message').fadeOut('fast', function() {
       self.$el.empty();
       self.$el.append(reply.render().el);
     });
@@ -85,7 +85,7 @@ window.RepliesView = Backbone.View.extend({
 
 // Internal: The view for handling a single reply from hubot.
 window.ReplyView = Backbone.View.extend({
-  tagName: 'h1',
+  className: 'message',
 
   initialize: function(options) {
     this.template = _.template($(options.template).html());

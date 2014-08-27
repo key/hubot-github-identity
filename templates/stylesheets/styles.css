@@ -1,8 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700);
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700);
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -118,34 +118,12 @@ h1 strong {
   }
 }
 
-@-webkit-keyframes blink-caret {
-  from, to {
-    border-color: transparent;
-  }
-
-  50% {
-    border-color: rgba(255, 255, 255, 0.8);
-  }
-}
-
-@-moz-keyframes blink-caret {
-  from, to {
-    border-color: transparent;
-  }
-
-  50% {
-    border-color: white;
-  }
-}
-
 h1 {
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 12px solid #fff;
-  padding-right: 2px;
-  -webkit-animation: typing 1s steps(71, end), blink-caret 1s step-end infinite;
-  -moz-animation: typing 1s steps(71, end), blink-caret 1s step-end infinite;
+  -webkit-animation: typing 1s steps(71, end);
+  -moz-animation: typing 1s steps(71, end);
 }
 
 .centered {
@@ -158,6 +136,28 @@ h1 {
   max-width: 700px;
   margin: 0 auto;
   text-align: left;
+  color: #fff;
+}
+.centered .name {
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+}
+.centered .name:before {
+  content: '';
+  width: 50px;
+  height: 50px;
+  margin-top: -10px;
+  border-radius: 50px;
+  border: 4px solid #fff;
+  float: left;
+  background: red;
+  margin-right: 10px;
+}
+.centered .message {
+  line-height: 24px;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 .centered input {
   background: #212121;
