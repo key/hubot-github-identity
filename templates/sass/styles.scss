@@ -95,19 +95,18 @@ h1 {
     font-size: 18px;
     font-weight: bold;
     display: block;
-
-    &:before {
-      content:'';
-      width: 50px;
-      height: 50px;
-      margin-top: -10px;
-      border-radius: 50px;
-      border: 3px solid #fff;
-      float: left;
-      background: red;
-      margin-right: 10px;
-    }
   }
+
+  .hubot-avatar {
+    width: 50px;
+    height: 50px;
+    margin: -5px 20px 0 10px;
+    margin-top: -8px;
+    border-radius: 50px;
+    box-shadow: 0 0 0 3px #fff;
+    float: left;
+  }
+
 
   .avatar {
     display: none;
