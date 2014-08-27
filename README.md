@@ -41,3 +41,9 @@ environment variable configured.
 ## Usage
 
 Coming soon.
+
+## See Also
+
+Scripts utilizing `hubot-github-identity`.
+
+  * Coming soon
