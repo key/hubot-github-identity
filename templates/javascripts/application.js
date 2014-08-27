@@ -66,6 +66,10 @@ window.App = {
 
   addReply: function(template, model) {
     var view = new window.ReplyView({ template: template, model: model });
+    if (model.avatar_url) {
+      $('.js-avatar img').attr('src', model.avatar_url);
+      $('.js-avatar').fadeIn();
+    }
     this.replies.add(view);
   },
 };
