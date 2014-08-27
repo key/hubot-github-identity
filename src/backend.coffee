@@ -47,6 +47,7 @@ module.exports = (robot) ->
 
     github.request '/user', req.body.token, (err, data) ->
       return res.send 404 if err or data.message is 'Bad credentials'
+      return res.send 404 if data.login isnt username
 
       robot.identity.setGitHubUserAndToken username, token, (err, reply) ->
         res.send reply
