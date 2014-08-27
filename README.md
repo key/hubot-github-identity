@@ -13,6 +13,8 @@ form served by Hubot.
 People add their GitHub username and API token so they can identify themselves
 and have Hubot run commands on their behalf when using scripts for GitHub.
 
+![Registering API Token](docs/screenshot.png)
+
 ## Installation
 
   * Add `hubot-github-identity` to your `package.json` file.
