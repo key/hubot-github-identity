@@ -1,7 +1,7 @@
 {
   "name": "hubot-github-identity",
   "description": "A Hubot script to manage GitHub identities and tokens",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "author": "Tom Bell <tomb@tomb.io>",
   "license": "MIT",
 
