@@ -64,7 +64,7 @@ function exists until all scripts have finished loading.**
 
 ```coffeescript
 robot.respond /make some github api request for me/i, (res) ->
-  robot.identity.findToken res.envelopment.user.name, (err, token) ->
+  robot.identity.findToken res.envelope.user.name, (err, token) ->
     # ...
 ```
 
