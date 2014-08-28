@@ -9,10 +9,6 @@
 
 module.exports = (robot) ->
 
-  unless robot.identity
-    robot.identity = require '../lib/identity'
-    robot.identity.init()
-
   robot.respond /who do you know/i, (res) ->
     res.reply "This hasn't been implemented yet"
 

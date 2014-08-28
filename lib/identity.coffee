@@ -10,6 +10,7 @@ identity =
                      process.env.BOXEN_REDIS_URL or
                      'redis://localhost:6379')
     @client = redis.createClient(info.port, info.hostname)
+    @client.auth(info.auth.split(":")[1]) if info.auth
 
   findToken: (chatUser, callback) ->
     @client.get "ghid:chat:#{chatUser}", (err, githubUser) =>
