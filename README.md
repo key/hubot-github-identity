@@ -40,10 +40,44 @@ environment variable configured.
 
 ## Usage
 
-Coming soon.
+Once you've got `hubot-github-identity` added, when you launch Hubot a simple
+page will be available at `http://{hostname}:{port}/github/identity`.
+
+It will prompt you to enter your GitHub username followed by a GitHub API token
+you would like Hubot to use on your behalf.
+
+**Note: these tokens are stored in Redis, but not in the brain data.**
+
+Once you've added your GitHub username and token you will be able to tell Hubot
+in your chat what your GitHub username is, this is so Hubot knows which chat
+user you are.
+
+  > Tom Bell > hubot i am tombell
+  > Hubot > Tom Bell: Ok, you are tombell on GitHub.
+
+Now in your scripts you will be able to get a GitHub API token for a user by
+using the `robot.identity.findToken()` function.
+
+**Note: this function is added during script loading, you should not assume the
+function exists until all scripts have finished loading.**
+
+```coffeescript
+robot.respond /make some github api request for me/i, (res) ->
+  robot.identity.findToken res.envelopment.user.name, (err, token) ->
+    # ...
+```
+
+The `err` parameter will contain an object with error details if there is an
+error. The `type` property will tell you what the error relates to.
+
+  * `type: 'redis'` there was an issue with communicating with Redis
+  * `type: 'github user'` the user hasn't told Hubot their GitHub username
 
 ## See Also
 
 Scripts utilizing `hubot-github-identity`.
 
   * Coming soon
+
+If you build a script package that intergrates with `hubot-github-identity`,
+open an issue and we'll add you to the list above.
