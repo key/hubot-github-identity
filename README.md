@@ -53,6 +53,7 @@ in your chat what your GitHub username is, this is so Hubot knows which chat
 user you are.
 
   > Tom Bell > hubot i am tombell
+
   > Hubot > Tom Bell: Ok, you are tombell on GitHub.
 
 Now in your scripts you will be able to get a GitHub API token for a user by
