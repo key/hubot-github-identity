@@ -80,5 +80,5 @@ Scripts utilizing `hubot-github-identity`.
 
   * Coming soon
 
-If you build a script package that intergrates with `hubot-github-identity`,
+If you build a script package that integrates with `hubot-github-identity`,
 open an issue and we'll add you to the list above.
