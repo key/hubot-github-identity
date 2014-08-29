@@ -38,6 +38,14 @@ If none are supplied it fallsback to using `redis://localhost:6379`. If you are
 already using the `redis-brain.coffee` script, you should already have this
 environment variable configured.
 
+You will also need to set the URL for your Hubot instance:
+
+  * `HUBOT_HOSTNAME`
+
+This should be the hostname including port number your Hubot is serving from.
+
+For example: `http://myawesomehubot.example.org:8888`
+
 ## Usage
 
 Once you've got `hubot-github-identity` added, when you launch Hubot a simple

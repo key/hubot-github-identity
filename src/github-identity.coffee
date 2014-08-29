@@ -24,7 +24,11 @@ module.exports = (robot) ->
           when 'chat user'
             res.reply "Sorry, you are already #{err.msg} on GitHub"
           when 'token'
-            res.reply "Sorry, I don't know of #{github}, maybe you need to register your GitHub username and API token with me?"
+            hostname = process.env.HUBOT_HOSTNAME
+            if hostname
+              res.reply "Sorry, I don't know of #{github}, maybe you need to register your GitHub username and API token with me at #{hostname}"
+            else
+              res.reply "Sorry, I don't know of #{github}, maybe you need to register your GitHub username and API token with me?"
       else
         res.reply "Ok, you are #{github} on GitHub."
 
