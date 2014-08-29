@@ -17,7 +17,7 @@ and have Hubot run commands on their behalf when using scripts for GitHub.
 
 ## Installation
 
-  * Add `hubot-github-identity` to your `package.json` file.
+  * Add `"hubot-github-identity":""` to your `package.json` file.
   * Add `hubot-github-identity` to your `external-scripts.json` file.
 
 **Note: your Hubot should be using the built in Express server.**
