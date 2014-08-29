@@ -80,11 +80,11 @@ identity =
       # github->chat username missing
       return callback(err: 'missing', type: 'chat user') unless github
 
-      @client.del "ghid:chat:#{chatUser}", (err, reply) ->
+      @client.del "ghid:chat:#{chatUser}", (err, reply) =>
         # redis err
         return callback(err: err, type: 'redis') if err
 
-        @client.del "ghid:token:#{github}", (err, reply) ->
+        @client.del "ghid:token:#{github}", (err, reply) =>
           # redis err
           return callback(err: err, type: 'redis') if err
 
