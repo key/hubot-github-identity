@@ -42,7 +42,8 @@ You will also need to set the URL for your Hubot instance:
 
   * `HUBOT_HOSTNAME`
 
-This should be the hostname including port number your Hubot is serving from.
+This should be the hostname including port number your Hubot is serving from. Do
+not include a trailing slash.
 
 For example: `http://myawesomehubot.example.org:8888`
 

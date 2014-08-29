@@ -26,6 +26,7 @@ module.exports = (robot) ->
           when 'token'
             hostname = process.env.HUBOT_HOSTNAME
             if hostname
+              hostname = "#{hostname}/github/identity"
               res.reply "Sorry, I don't know of #{github}, maybe you need to register your GitHub username and API token with me at #{hostname}"
             else
               res.reply "Sorry, I don't know of #{github}, maybe you need to register your GitHub username and API token with me?"
