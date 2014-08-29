@@ -17,7 +17,7 @@ and have Hubot run commands on their behalf when using scripts for GitHub.
 
 ## Installation
 
-  * Add `"hubot-github-identity": "0.7.0"` to your `package.json` file.
+  * Add `"hubot-github-identity": "*"` to your `package.json` file.
   * Add `hubot-github-identity` to your `external-scripts.json` file.
 
 **Note: your Hubot should be using the built in Express server.**
@@ -87,7 +87,7 @@ error. The `type` property will tell you what the error relates to.
 
 Scripts utilizing `hubot-github-identity`.
 
-  * Coming soon
+  * `hubot-github-issues` - https://github.com/tombell/hubot-github-issues
 
 If you build a script package that integrates with `hubot-github-identity`,
 open an issue and we'll add you to the list above.
