@@ -28,6 +28,7 @@
   },
 
   "devDependencies": {
+    "coffee-script": "*",
     "mocha": "*",
     "chai": "*",
     "sinon-chai": "*",
