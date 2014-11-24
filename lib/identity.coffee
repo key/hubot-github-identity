@@ -27,6 +27,14 @@ identity =
         # ok
         callback(null, token)
 
+  findUser: (githubUser, callback) ->
+    @client.get "ghid:github:#{githubUser}", (err, chatUser) ->
+      # redis err
+      return callback(err: err, type: 'redis') if err
+
+      # ok
+      callback(null, chatUser)
+
   setGitHubUserAndToken: (githubUser, token, callback) ->
     @client.set "ghid:token:#{githubUser}", token, (err, reply) ->
       # redis err
@@ -50,12 +58,16 @@ identity =
         # github->token missing
         return callback(err: 'missing', type: 'token') unless token
 
-        @client.set "ghid:chat:#{chatUser}", githubUser, (err, reply) ->
+        @client.set "ghid:github:#{githubUser}", chatUser, (err, reply) ->
           # redis err
           return callback(err: err, type: 'redis') if err
 
-          # ok
-          callback(null, reply)
+          @client.set "ghid:chat:#{chatUser}", githubUser, (err, reply) ->
+            # redis err
+            return callback(err: err, type: 'redis') if err
+
+            # ok
+            callback(null, reply)
 
   forgetChatUser: (chatUser, callback) ->
     @client.get "ghid:chat:#{chatUser}", (err, github) =>
